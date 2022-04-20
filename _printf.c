@@ -14,10 +14,7 @@ int _printf(const char *format, ...)
 	pt_t types[] = {
 		{"c", print_c},
 		{"s", print_s},
-		{"d", print_d},
 		{"%", print_p},
-		{"i", print_d},
-		{NULL, NULL},
 	};
 	if (format == NULL)
 		return (-1);
