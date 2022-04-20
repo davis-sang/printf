@@ -1,4 +1,3 @@
-#include <stdarg.h>
 #include <unistd.h>
 #include "main.h"
 
@@ -10,40 +9,44 @@
 
 int _printf(const char *format, ...)
 {
-	int i;
-	unsigned int p_char;
-	char *p_str;
+	int i, j, c = 0;
 	va_list ap;
-	const char *string;
-
+	pt_t types[] = {
+		{"c", print_c},
+		{"s", print_s},
+		{"d", print_d},
+		{"%", print_p},
+		{"i", print_d},
+		{NULL, NULL},
+	};
+	if (format == NULL)
+		return (-1);
 	va_start(ap, format);
-
-	string = format;
 	i = 0;
-	while (string[i] != '\0')
+	while (format != NULL && format[i] != '\0')
 	{
-		if (string[i] != '%' && string[i] != '\0')
+		if (format[i] == '%')
 		{
-			_putchar(string[i]);
+			i++;
+			if (format[i] == '\0')
+			{
+				return (-1);
+			}
+			j = 0;
+			while (types[j].fs != NULL)
+			{
+				if (*(types[j].fs) == format[i])
+					c += types[j].f(ap);
+				j++;
+			}
 			i++;
 		}
-		if (string[i] == '%')
+		if (format[i] != '%' && format[i] != '\0')
 		{
-			i++;
-			switch (string[i])
-			{
-				case 'c':
-					p_char = va_arg(ap, int);
-				       _putchar(p_char);
-					break;
-				case 's':
-					p_str = va_arg(ap, char *);
-					_puts(p_str);
-					break;
-			}
+			c += _putchar(format[i]);
 			i++;
 		}
 	}
 	va_end(ap);
-	return (0);
+	return (c);
 }
