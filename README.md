@@ -2,7 +2,7 @@
 
 ## Mandatory Tasks
 
-1. Task 0: Write a function that produces output according to a format.
+0. Task 0: Write a function that produces output according to a format.
 
 	* Prototype: `int _printf(const char *format, ...);`
 	* Returns: the number of characters printed (excluding the null byte used to end output to strings)
@@ -21,7 +21,7 @@
 	* You don’t have to handle precision
 	* You don’t have to handle the length modifiers
 
-2. Task 0: Handle the following conversion specifiers:
+1. Task 0: Handle the following conversion specifiers:
 		
 		- d
 		- i
@@ -31,4 +31,30 @@
 	* You don’t have to handle precision
 	* You don’t have to handle the length modifiers
 
-3. Task 2:  Create a man page for your function.
+## Advanced Tasks
+2.  Handle the following custom conversion specifiers:
+	
+		- b: the unsigned int argument is converted to binary
+
+3. Handle the following conversion specifiers:
+
+		- u
+		- o
+		- x
+		- X
+	
+	* You don’t have to handle the flag characters
+	* You don’t have to handle field width
+	* You don’t have to handle precision
+	* You don’t have to handle the length modifiers
+
+4. Handle the following custom conversion specifier:
+		- S : prints the string.
+
+	* Non printable characters (0 < ASCII value < 32 or >= 127) are printed this way: \x, followed by the ASCII code value in hexadecimal (upper case - always 2 characters)
+
+5. Handle the following conversion specifier: p.
+	* You don’t have to handle the flag characters
+	* You don’t have to handle field width
+	* You don’t have to handle precision
+	* You don’t have to handle the length modifiers
