@@ -3,9 +3,9 @@
 /**
  * check_for_specifiers - checks if there is a valid format specifier
  * @format: possible format specifier
- *
  * Return: pointer to valid function or NULL
  */
+
 static int (*check_for_specifiers(const char *format))(va_list)
 {
 	unsigned int i;
@@ -15,6 +15,10 @@ static int (*check_for_specifiers(const char *format))(va_list)
 		{"d", print_d},
 		{"i", print_i},
 		{"b", print_b},
+		{"u", print_u},
+		{"o", print_o},
+		{"x", print_x},
+		{"X", print_X},
 		{NULL, NULL}
 	};
 
@@ -32,6 +36,7 @@ static int (*check_for_specifiers(const char *format))(va_list)
  *@format: list of argument types passed to the function
  *Return: number of characters
  */
+
 int _printf(const char *format, ...)
 {
 	unsigned int i = 0, count = 0;
