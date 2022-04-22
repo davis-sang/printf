@@ -1,9 +1,11 @@
 #include "main.h"
+
 /**
  * print_c - prints a char
  * @c: char to print
  * Return: 1
  */
+
 int print_c(va_list c)
 {
 	char ch = (char)va_arg(c, int);
@@ -16,6 +18,7 @@ int print_c(va_list c)
  * @s: string to print
  * Return: no. of chars and digits printed
  */
+
 int print_s(va_list s)
 {
 	int c;
@@ -35,6 +38,7 @@ int print_s(va_list s)
  * @d: decimal to print
  * Return: no of chars and digits printed
  */
+
 int print_d(va_list d)
 {
 	int a[10];
@@ -72,6 +76,7 @@ int print_d(va_list d)
  * @i: integer to print
  * Return: number of chars and digits printed
  */
+
 int print_i(va_list i)
 {
 	int a[10];
@@ -99,6 +104,39 @@ int print_i(va_list i)
 		if (sum != 0 || h == 9)
 		{
 			_putchar('0' + a[h]);
+			c++;
+		}
+	}
+	return (c);
+}
+
+/**
+ * print_b - an unsigned int is converted to binary
+ * @b: unsigned int
+ * c - count
+ * Return: no. of digits printed
+ */
+
+int print_b(va_list b)
+{
+	unsigned int a[32];
+	unsigned int sum, x, y, z;
+	int c;
+
+	x = va_arg(b, unsigned int);
+	y = 2147483648; /* (2 ^ 31) */
+	a[0] = x / y;
+	for (z = 1; z < 32; z++)
+	{
+		y /= 2;
+		a[z] = (x / y) % 2;
+	}
+	for (z = 0, sum = 0, c = 0; z < 32; z++)
+	{
+		sum += a[z];
+		if (sum || z == 31)
+		{
+			_putchar('0' + a[z]);
 			c++;
 		}
 	}
